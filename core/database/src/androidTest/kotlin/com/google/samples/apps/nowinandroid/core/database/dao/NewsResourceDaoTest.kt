@@ -16,10 +16,6 @@
 
 package com.google.samples.apps.nowinandroid.core.database.dao
 
-import android.content.Context
-import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
-import com.google.samples.apps.nowinandroid.core.database.NiaDatabase
 import com.google.samples.apps.nowinandroid.core.database.model.NewsResourceEntity
 import com.google.samples.apps.nowinandroid.core.database.model.NewsResourceTopicCrossRef
 import com.google.samples.apps.nowinandroid.core.database.model.TopicEntity
@@ -27,36 +23,13 @@ import com.google.samples.apps.nowinandroid.core.database.model.asExternalModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Instant
-import org.junit.After
-import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
-/**
- * Instrumentation tests for [NewsResourceDao].
- */
-class NewsResourceDaoTest {
-
-    private lateinit var newsResourceDao: NewsResourceDao
-    private lateinit var topicDao: TopicDao
-    private lateinit var db: NiaDatabase
-
-    @Before
-    fun createDb() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        db = Room.inMemoryDatabaseBuilder(
-            context,
-            NiaDatabase::class.java,
-        ).build()
-        newsResourceDao = db.newsResourceDao()
-        topicDao = db.topicDao()
-    }
-
-    @After
-    fun closeDb() = db.close()
+internal class NewsResourceDaoTest : DatabaseTest() {
 
     @Test
-    fun newsResourceDao_fetches_items_by_descending_publish_date() = runTest {
+    fun getNewsResources_allEntries_areOrderedByPublishDateDesc() = runTest {
         val newsResourceEntities = listOf(
             testNewsResource(
                 id = "0",
@@ -91,7 +64,7 @@ class NewsResourceDaoTest {
     }
 
     @Test
-    fun newsResourceDao_filters_items_by_news_ids_by_descending_publish_date() = runTest {
+    fun getNewsResources_filteredById_areOrderedByDescendingPublishDate() = runTest {
         val newsResourceEntities = listOf(
             testNewsResource(
                 id = "0",
@@ -129,7 +102,7 @@ class NewsResourceDaoTest {
     }
 
     @Test
-    fun newsResourceDao_filters_items_by_topic_ids_by_descending_publish_date() = runTest {
+    fun getNewsResources_filteredByTopicId_areOrderedByDescendingPublishDate() = runTest {
         val topicEntities = listOf(
             testTopicEntity(
                 id = "1",
@@ -189,7 +162,7 @@ class NewsResourceDaoTest {
     }
 
     @Test
-    fun newsResourceDao_filters_items_by_news_and_topic_ids_by_descending_publish_date() = runTest {
+    fun getNewsResources_filteredByIdAndTopicId_areOrderedByDescendingPublishDate() = runTest {
         val topicEntities = listOf(
             testTopicEntity(
                 id = "1",
@@ -251,7 +224,7 @@ class NewsResourceDaoTest {
     }
 
     @Test
-    fun newsResourceDao_deletes_items_by_ids() =
+    fun deleteNewsResources_byId() =
         runTest {
             val newsResourceEntities = listOf(
                 testNewsResource(
