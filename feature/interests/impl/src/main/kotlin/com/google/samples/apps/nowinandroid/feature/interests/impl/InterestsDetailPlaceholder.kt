@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.feature.topic.api
+package com.google.samples.apps.nowinandroid.feature.interests.impl
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,9 +33,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.samples.apps.nowinandroid.core.designsystem.theme.NiaTheme
+import com.google.samples.apps.nowinandroid.feature.interests.api.R
 
 @Composable
-fun TopicDetailPlaceholder(modifier: Modifier = Modifier) {
+fun InterestsDetailPlaceholder(modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
@@ -50,12 +51,12 @@ fun TopicDetailPlaceholder(modifier: Modifier = Modifier) {
             ),
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.feature_topic_api_ic_topic_placeholder),
+                painter = painterResource(id = R.drawable.feature_interests_api_ic_detail_placeholder),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
             )
             Text(
-                text = stringResource(id = R.string.feature_topic_api_select_an_interest),
+                text = stringResource(id = R.string.feature_interests_api_select_an_interest),
                 style = MaterialTheme.typography.titleLarge,
             )
         }
@@ -66,6 +67,6 @@ fun TopicDetailPlaceholder(modifier: Modifier = Modifier) {
 @Composable
 fun TopicDetailPlaceholderPreview() {
     NiaTheme {
-        TopicDetailPlaceholder()
+        InterestsDetailPlaceholder()
     }
 }

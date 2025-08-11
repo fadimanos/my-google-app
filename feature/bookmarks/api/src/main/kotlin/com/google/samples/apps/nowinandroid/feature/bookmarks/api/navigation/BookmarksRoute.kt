@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 The Android Open Source Project
+ * Copyright 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.nowinandroid.feature.search.api.navigation
+package com.google.samples.apps.nowinandroid.feature.bookmarks.api.navigation
 
-import com.google.samples.apps.nowinandroid.core.navigation.NiaBackStack
 import com.google.samples.apps.nowinandroid.core.navigation.NiaNavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-object SearchRoute: NiaNavKey {
+object BookmarksRoute : NiaNavKey {
     override val isTopLevel: Boolean
-        get() = false
-}
-
-fun NiaBackStack.navigateToSearch() {
-    navigate(SearchRoute)
+        get() = true
 }

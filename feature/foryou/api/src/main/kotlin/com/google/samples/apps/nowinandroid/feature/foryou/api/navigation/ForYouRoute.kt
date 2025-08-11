@@ -20,7 +20,7 @@ import com.google.samples.apps.nowinandroid.core.navigation.NiaNavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-object ForYouRoute: NiaNavKey{ // route to ForYou screen
+object ForYouRoute : NiaNavKey { // route to ForYou screen
     override val isTopLevel: Boolean
         get() = true
 }

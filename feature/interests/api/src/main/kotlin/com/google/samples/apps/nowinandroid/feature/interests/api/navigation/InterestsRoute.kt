@@ -23,7 +23,7 @@ import kotlinx.serialization.Serializable
 data class InterestsRoute(
     // The ID of the topic which will be initially selected at this destination
     val initialTopicId: String? = null,
-): NiaNavKey {
+) : NiaNavKey {
     override val isTopLevel: Boolean
         get() = true
 }

@@ -21,7 +21,7 @@ import com.google.samples.apps.nowinandroid.core.navigation.NiaNavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TopicRoute(val id: String): NiaNavKey{
+data class TopicRoute(val id: String) : NiaNavKey {
     override val isTopLevel: Boolean
         get() = false
 }
